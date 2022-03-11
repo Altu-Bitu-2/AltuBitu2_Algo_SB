@@ -1,17 +1,16 @@
 #include<iostream>
-
 using namespace std;
 
-const int MINUTE = 60;  // 1분 초로 나타냄
-const int HOUR = 60 * MINUTE;   // 1시간 초로 나타냄
-const int DAY = 24 * HOUR;  // 하루 초로 나타냄
+const int MINUTE = 60;  // 1분을 초로 나타냄
+const int HOUR = 60 * MINUTE;   // 1시간을 초로 나타냄
+const int DAY = 24 * HOUR;  // 하루를 초로 나타냄
 
-// 변화하는 초 값 계산해서 보내주는 함수
+// 변화하는 초의 값 계산해서 보내주는 함수
 int changeTime(int t, int c) {
     // 돌리는 초가 하루보다 크다면 하루가 넘어가므로 모듈러 연산 후 연산
     int change_value = c % DAY;
-    if (t == 2) {    // 시간 뒤로
-        change_value = -change_value;
+    if (t == 2) {    // 시간을 뒤로 돌림
+        change_value = -change_value;   // 시간이 전날로 넘어간 경우
     }
     return change_value;
 }
@@ -28,16 +27,16 @@ int main() {
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
 
-    int h, m, s, q, t, c, second = 0;
+    int h, m, s, q, t, c, second = 0;   // 변수 선언
     // 입력
     cin >> h >> m >> s;
     cin >> q;
     // 시간 초기화
-    second = h * HOUR + m * MINUTE + s;
+    second = h * HOUR + m * MINUTE + s; // 초로 바꿈
     // 입력 & 연산 & 출력
     while (q--) {
         cin >> t;
-        if (t == 3) {   // 시계가 가르키는 시간 출력
+        if (t == 3) {   // 시계가 가리키는 시간 출력
             second %= DAY;  // 하루가 넘어갔을 수 있으므로 모듈러 연산
             h = second / HOUR;
             m = (second % HOUR) / MINUTE;
